@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.icicibank.apimgmt.CryptoProgramVerifyApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 9.246 s - in com.icicibank.apimgmt.CryptoProgramVerifyApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 10.193 s - in com.icicibank.apimgmt.CryptoProgramVerifyApplicationTests

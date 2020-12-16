@@ -35,7 +35,7 @@ public class CryptoProgramVerifyController {
 			
 		} catch (IOException e) {
 			responseModel.setStatus("Fail");
-			responseModel.setStatus(" "+e.getMessage());
+			responseModel.setErrorMessage(" "+e.getMessage());
 		}
 		
 		return ResponseEntity.ok().body(responseModel);

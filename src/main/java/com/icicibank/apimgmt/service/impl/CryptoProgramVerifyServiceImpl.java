@@ -3,6 +3,7 @@ package com.icicibank.apimgmt.service.impl;
 import java.io.IOException;
 import java.security.interfaces.RSAPrivateKey;
 import java.security.interfaces.RSAPublicKey;
+import java.time.temporal.ChronoUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -42,7 +43,8 @@ public class CryptoProgramVerifyServiceImpl implements CryptoProgramVerifyServic
 		
 		try {
 		    Algorithm algorithm = Algorithm.RSA256(publicKey, privateKey);
-		    JWTVerifier verifier = JWT.require(algorithm)
+		    // leeway= ChronoUnit.MILLIS.between(, temporal2Exclusive)
+		    JWTVerifier verifier = JWT.require(algorithm).acceptLeeway(19805)
 		        .build(); //Reusable verifier instance
 		    DecodedJWT jwt = verifier.verify(token);
 		    
