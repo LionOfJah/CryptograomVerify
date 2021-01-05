@@ -9,6 +9,6 @@ import com.icicibank.apimgmt.model.ResponseModel;
 @Service
 public interface CryptoProgramVerifyService {
 	
-	public ResponseModel verifyJwtSignature(String token) throws IOException ;
+	public ResponseModel verifyJwtSignature(String token,String publicKey) throws IOException ;
 
 }

@@ -25,13 +25,14 @@ public class CryptoProgramVerifyController {
 	ResponseModel responseModel; 
 	
 	@GetMapping("/api/v0/verifyCrypto")
-	public ResponseEntity<ResponseModel> verifyCryptoProgram(@RequestHeader("Cryptogram") String cryptoProgram){
+	public ResponseEntity<ResponseModel> verifyCryptoProgram(@RequestHeader("Cryptogram") String cryptoProgram,@RequestHeader("publicKey")String publicKey){
 		
 		logger.info("cryptoProgram "+cryptoProgram);
+		logger.info("publicKey "+publicKey);
 		
 		
 		try {
-			responseModel=service.verifyJwtSignature(cryptoProgram);
+			responseModel=service.verifyJwtSignature(cryptoProgram,publicKey);
 			
 		} catch (IOException e) {
 			responseModel.setStatus("Fail");
