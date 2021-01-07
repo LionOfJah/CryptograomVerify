@@ -5,15 +5,21 @@ import java.io.IOException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.annotation.RequestScope;
 
 import com.icicibank.apimgmt.model.ResponseModel;
 import com.icicibank.apimgmt.service.CryptoProgramVerifyService;
 
 @RestController
+@RequestMapping
+@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class CryptoProgramVerifyController {
 
 	public static Logger logger = LoggerFactory.getLogger(CryptoProgramVerifyController.class);
