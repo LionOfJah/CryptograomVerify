@@ -13,6 +13,7 @@ import java.security.spec.EncodedKeySpec;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
 
 import org.bouncycastle.asn1.pkcs.PrivateKeyInfo;
 import org.bouncycastle.openssl.PEMParser;
@@ -25,6 +26,18 @@ import org.slf4j.LoggerFactory;
 public class PemUtils {
 
 	public static Logger logger=LoggerFactory.getLogger(PemUtils.class);
+	
+	public static void main(String[] args) {
+		
+		//logger.info(" "+getPublicKey(Base64.getDecoder().decode("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAnxFW94IEYunr/Y1wpMXBCGbMfNgUQnac1PTNosS/jOVVrj1zntyfYGDhMAImXI3V7LtnV8fg9G1895Yo2ujyBl7E47eYyevITDnPxb5ii2MTLaOllI5foT4pmaxkNA9qiAzYULfNRjss4Nb7Mw8rdpgaCHGfucCqWJO5mjwRdYL7SmOaqWmTQmrPbSeTkdp1j4wZhhtyShTDXV4rn6bqIGyndSHJ94YifK9mfAynoHyguWjzoLQ06BXpWZoWUYnDQA69raC5oaIGCx91Lc8Sfgyh8nsuXaPD7lVyLQNvkdQ9MFyPoiTUQ1+w41yQJyPFM5M6bgUpkoGCkQI+0kII1QIDAQAB"), "RSA"));
+		
+		try {
+			logger.info(" "+readPrivateKeyFromFile("C:\\Users\\jitendra_rawat\\Desktop\\Trulioo\\icici_privateKey.txt", "RSA"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
     private static byte[] parsePEMFile(File pemFile) throws IOException {
         if (!pemFile.isFile() || !pemFile.exists()) {
             throw new FileNotFoundException(String.format("The file '%s' doesn't exist.", pemFile.getAbsolutePath()));

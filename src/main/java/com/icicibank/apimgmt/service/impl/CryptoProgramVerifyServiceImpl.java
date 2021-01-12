@@ -24,6 +24,7 @@ import com.icicibank.apimgmt.model.ResponseModel;
 import com.icicibank.apimgmt.service.CryptoProgramVerifyService;
 import com.icicibank.apimgmt.util.PemUtils;
 
+
 @Service
 @Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class CryptoProgramVerifyServiceImpl implements CryptoProgramVerifyService {
@@ -47,7 +48,7 @@ public class CryptoProgramVerifyServiceImpl implements CryptoProgramVerifyServic
 		RSAPrivateKey privateKey=(RSAPrivateKey) PemUtils.readPrivateKeyFromFileSecond(RSA_PRIVATE_KEY);
 		
 		RSAPublicKey publicKey=(RSAPublicKey) PemUtils.getPublicKey(Base64.getDecoder().decode(publicKeyFromReq), "RSA");
-		logger.info(" privateKey "+privateKey );
+		logger.info(" publicKey "+publicKey );
 		
 		
 		
@@ -61,8 +62,8 @@ public class CryptoProgramVerifyServiceImpl implements CryptoProgramVerifyServic
 			
 		    Algorithm algorithm = Algorithm.RSA256(publicKey, privateKey);
 		    // leeway= ChronoUnit.MILLIS.between(, temporal2Exclusive)
-		    JWTVerifier verifier = JWT.require(algorithm).acceptLeeway(19805)
-		        .build(); //Reusable verifier instance
+		    JWTVerifier verifier = JWT.require(algorithm).acceptLeeway(19805).ignoreIssuedAt().
+		        build(); //Reusable verifier instance
 		    DecodedJWT jwt = verifier.verify(token);
 		    
 			/*
