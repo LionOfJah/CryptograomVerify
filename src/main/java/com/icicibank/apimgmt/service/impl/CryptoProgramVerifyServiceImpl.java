@@ -30,11 +30,13 @@ import com.icicibank.apimgmt.util.PemUtils;
 public class CryptoProgramVerifyServiceImpl implements CryptoProgramVerifyService {
 
 	public static Logger logger = LoggerFactory.getLogger(CryptoProgramVerifyServiceImpl.class);
-	@Value("${app.publickey.filePath}")
-	String RSA_PUBLIC_KEY;
+	/*
+	 * @Value("${app.publickey.filePath}") String RSA_PUBLIC_KEY;
+	 */
 	
-	@Value("${app.privatekey.filePath}")
-	String RSA_PRIVATE_KEY;
+	/*
+	 * @Value("${app.privatekey.filePath}") String RSA_PRIVATE_KEY;
+	 */
 	
 	@Autowired
 	ResponseModel responseModel;
@@ -45,7 +47,7 @@ public class CryptoProgramVerifyServiceImpl implements CryptoProgramVerifyServic
 		
 		//RSAPublicKey publicKey=(RSAPublicKey) PemUtils.readPublicKeyFromFile(RSA_PUBLIC_KEY, "RSA");
 		
-		RSAPrivateKey privateKey=(RSAPrivateKey) PemUtils.readPrivateKeyFromFileSecond(RSA_PRIVATE_KEY);
+		RSAPrivateKey privateKey=(RSAPrivateKey) PemUtils.readPrivateKeyFromFileSecond();
 		
 		RSAPublicKey publicKey=(RSAPublicKey) PemUtils.getPublicKey(Base64.getDecoder().decode(publicKeyFromReq), "RSA");
 		logger.info(" publicKey "+publicKey );

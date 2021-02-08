@@ -22,6 +22,7 @@ import org.bouncycastle.util.io.pem.PemObject;
 import org.bouncycastle.util.io.pem.PemReader;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
 
 public class PemUtils {
 
@@ -97,13 +98,14 @@ public class PemUtils {
     }
 
     public static PrivateKey readPrivateKeyFromFile(String filepath, String algorithm) throws IOException {
-        byte[] bytes = PemUtils.parsePEMFile(new File(filepath));
+    	File resource = new ClassPathResource("PrivateKey.txt").getFile();
+        byte[] bytes = PemUtils.parsePEMFile(resource);
         return PemUtils.getPrivateKey(bytes, algorithm);
     }
     
-    public static RSAPrivateKey readPrivateKeyFromFileSecond(String filepath) throws IOException {
-         
-        return PemUtils.readPrivateKeySecondApproach(new File(filepath));
+    public static RSAPrivateKey readPrivateKeyFromFileSecond() throws IOException {
+    	File resource = new ClassPathResource("PrivateKey.txt").getFile();
+        return PemUtils.readPrivateKeySecondApproach(resource);
     }
 
 }
